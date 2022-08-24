@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// database connection
 const mongoose = require('mongoose');
 const mongoDB = 'mongodb+srv://tedifer_jones:01MzlxfuyrOhMS29@cluster0.l32husu.mongodb.net/odin-inventory-application?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
