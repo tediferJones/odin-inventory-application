@@ -164,14 +164,9 @@ function(err, results) {
         console.log('FINAL ERR: '+err);
     }
     else {
-        console.log('BOOKInstances: '+bookinstances);
+        console.log('IDK I GUESS DONE');
         
     }
     // All done, disconnect from database
     mongoose.connection.close();
 });
-
-// THIS SCRIPT WAS MADE FOR THE LOCAL LIBRARY TUTORIAL
-// Needs to be edited to work for our current project, the gameboy store
-
-// NEED TO ADD CORRECT MONGODB URL
