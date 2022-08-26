@@ -12,7 +12,7 @@ if (!userArgs[0].startsWith('mongodb')) {
 */
 var async = require('async')
 
-var GameConsole = require('./models/gameconsole')
+var GameConsole = require('./models/gameConsole')
 var Game = require('./models/game')
 var Accessory = require('./models/accessory')
 
