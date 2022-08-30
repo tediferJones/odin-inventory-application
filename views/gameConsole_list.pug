@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  ul 
+    each gameConsole in gameConsole_list 
+      li 
+        a(href=gameConsole.url) #{gameConsole.name}
+    
+    else 
+      li There are no game consoles available.

@@ -1,5 +1,17 @@
-extends layout
+extends layout 
 
-block content
-  h1= title
-  p Welcome to #{title}
+block content 
+  h1= title 
+  p Welcome to #[em The Game Boy Store], a very basic Express website developed with the help of Mozilla Developer Network.
+
+  h1 Dynamic Content 
+
+  if error 
+    p Error getting dynamic content.
+  else 
+    p The Game Boy Store has the following items: 
+
+    ul 
+      li #[strong Game Consoles:] !{data.gameConsole_count}
+      li #[strong Games:] !{data.game_count}
+      li #[strong Accessories:] !{data.accessory_count}

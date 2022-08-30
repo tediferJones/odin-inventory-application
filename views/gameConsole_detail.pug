@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  p #[strong Name:] !{gameConsole_info.name}
+  p #[strong Description:] !{gameConsole_info.description}
+  p #[strong In-Stock:] !{gameConsole_info.instock}
+  p #[strong Price:] $!{gameConsole_info.price}
