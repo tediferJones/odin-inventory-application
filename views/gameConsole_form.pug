@@ -1,0 +1,27 @@
+extends layout 
+
+block content 
+  h1= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Name of Console: 
+      input#name.form-control(type='text' name='name' placeholder='Game Boy Advance' value=(undefined===gameConsole ? '' : gameConsole.name))
+
+      label(for='description') Description: 
+      input#description.form-control(type='text' name='description' placeholder='The successor of the Game Boy Color' value=(undefined===gameConsole ? '' : gameConsole.description))
+      
+      label(for='price') Price (USD): 
+      input#price.form-control(type='number' name='price' placeholder='99.99' value=(undefined===gameConsole ? '' : gameConsole.price))
+
+      label(for='instock') Number in-stock: 
+      input#instock.form-control(type='number' name='instock' placeholder='1' value=(undefined===gameConsole ? '' : gameConsole.instock))
+
+      hr
+
+      button.btn.btn-primary(type='submit') Submit 
+
+      if errors 
+        ul 
+          for error in errors 
+            li!= error.msg
