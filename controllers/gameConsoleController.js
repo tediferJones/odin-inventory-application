@@ -33,22 +33,17 @@ exports.gameConsole_list = (req, res, next) => {
 };
 
 exports.gameConsole_detail = (req, res, next) => {
-  async.parallel({
-    gameConsole_info(callback) {
-      GameConsole.findById(req.params.id)
-      .exec(callback);
-    }
-  }, (err, results) => {
+  GameConsole.findById(req.params.id)
+  .exec(function(err, gameConsole) {
     if (err) { return next(err); }
 
-    if (results.gameConsole_info == null) {
-      // No Results found
+    if (gameConsole == null) {
       const err = new Error('Game Console Not Found');
       err.status = 404;
       return next(err);
     }
 
-    res.render('gameConsole_detail', {title: 'Game Console Details', gameConsole_info: results.gameConsole_info })
+    res.render('gameConsole_detail', { title: 'Game Console Details', gameConsole})
   })
 };
 
@@ -67,7 +62,7 @@ exports.gameConsole_create_post = [
     // Check for errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.render('gameConsole_form', { title: 'Create', gameConsole: req.body, errors: errors.array() });
+      res.render('gameConsole_form', { title: 'Create Game Console', gameConsole: req.body, errors: errors.array() });
       return;
     }
 
@@ -86,21 +81,15 @@ exports.gameConsole_create_post = [
 ]
 
 exports.gameConsole_delete_get = (req, res, next) => {
-  // res.send('NOT IMPLEMENTED: Game Console Delete Get');
-  // doesnt need to be parallel cuz only 1 task
-  async.parallel({
-    gameConsole(callback) {
-      GameConsole.findById(req.params.id)
-      .exec(callback)
-    }
-  }, (err, results) => {
+  GameConsole.findById(req.params.id)
+  .exec(function(err, gameConsole) {
     if (err) { return next(err); }
 
-    if (results.gameConsole == null) {
+    if (gameConsole == null) {
       res.redirect('/catalog/gameConsoles')
     }
 
-    res.render('gameConsole_delete', { title: 'Delete Game Console', gameConsole: results.gameConsole })
+    res.render('gameConsole_delete', { title: 'Delete Game Console', gameConsole })
   })
 };
 
@@ -112,28 +101,14 @@ exports.gameConsole_delete_post = (req, res, next) => {
 };
 
 exports.gameConsole_update_get = (req, res, next) => {
-  // res.send('NOT IMPLEMENTED: Game Console Update Get');
-  // GameConsole.findById(req.params.id).exec(function(err, results) {
-  //   if (err) { return next(err); }
-  //   console.log(results.gameConsole)
-  //   res.render('gameConsole_form', { title: 'Update Game Console', gameConsole: results.gameConsole })
-  // })
-  async.parallel({
-    gameConsole(callback) {
-      GameConsole.findById(req.params.id)
-      .exec(callback)
-    }
-  }, (err, results) => {
+  GameConsole.findById(req.params.id)
+  .exec(function(err, gameConsole) {
     if (err) { return next(err); }
-
-    res.render('gameConsole_form', { title: "Update Game Console", gameConsole: results.gameConsole })
+    res.render('gameConsole_form', { title: 'Update Game Console', gameConsole})
   })
 };
 
 exports.gameConsole_update_post = [
-  // res.send('NOT IMPLEMENTED: Game Console Update Post');
-
-  // Sanitize Inputs
   body('name').trim().isLength({ min: 1 }).escape().withMessage('Console name must be specified.'),
   body('description').trim().isLength({ min: 1 }).escape().withMessage('Console description must be specified'),
   body('price').trim().isLength({ min: 1 }).escape().withMessage('Console price must be specified'),

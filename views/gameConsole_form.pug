@@ -12,10 +12,10 @@ block content
       input#description.form-control(type='text' name='description' placeholder='The successor of the Game Boy Color' value=(undefined===gameConsole ? '' : gameConsole.description))
       
       label(for='price') Price (USD): 
-      input#price.form-control(type='number' name='price' placeholder='99.99' value=(undefined===gameConsole ? '' : gameConsole.price))
+      input#price.form-control(type='number' step='0.01' min='0.01' name='price' placeholder='99.99' value=(undefined===gameConsole ? '' : gameConsole.price))
 
       label(for='instock') Number in-stock: 
-      input#instock.form-control(type='number' name='instock' placeholder='1' value=(undefined===gameConsole ? '' : gameConsole.instock))
+      input#instock.form-control(type='number' min='1' name='instock' placeholder='1' value=(undefined===gameConsole ? '' : gameConsole.instock))
 
       hr
 

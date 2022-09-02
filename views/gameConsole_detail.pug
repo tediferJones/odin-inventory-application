@@ -3,14 +3,14 @@ extends layout
 block content 
   h1= title 
 
-  p #[strong Name:] !{gameConsole_info.name}
-  p #[strong Description:] !{gameConsole_info.description}
-  p #[strong Price:] $!{gameConsole_info.price}
-  p #[strong In-Stock:] !{gameConsole_info.instock}
+  p #[strong Name:] !{gameConsole.name}
+  p #[strong Description:] !{gameConsole.description}
+  p #[strong Price:] $!{gameConsole.price}
+  p #[strong In-Stock:] !{gameConsole.instock}
 
   hr
 
   p
-    a(href=gameConsole_info.url+'/delete') Delete Game Console
+    a(href=gameConsole.url+'/delete') Delete Game Console
   p 
-    a(href=gameConsole_info.url+'/update') Update Game Console
+    a(href=gameConsole.url+'/update') Update Game Console
