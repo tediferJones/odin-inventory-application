@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  p #[Strong Name:] #{accessory.name}
+  p #[Strong Description:] #{accessory.description}
+  p #[Strong Price:] #{accessory.price}
+  p #[Strong In-Stock:] #{accessory.instock}
+
+  hr
+
+  p 
+    a(href=accessory.url + '/delete') Delete Accessory
+  p 
+    a(href=accessory.url + '/update') Update Accessory
